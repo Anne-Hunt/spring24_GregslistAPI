@@ -7,12 +7,15 @@ class PetsService {
         return pets
     }
 
-    searchPets(searchQuery) {
-        _queryBuilder(searchQuery)
-
+    async searchPets(searchQuery) {
+        const pets = await dbContext.Pets.find(searchQuery)
+        return pets
     }
 
-    getPetById(petId) {
+    async getPetById(petId) {
+        const pet = await dbContext.Pets.findById(petId)
+        if (!pet) throw new Error(`That pet isn't available ${petId}`)
+        return pet
 
     }
 }

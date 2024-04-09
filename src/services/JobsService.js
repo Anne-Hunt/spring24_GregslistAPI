@@ -7,12 +7,15 @@ class JobsService {
         return jobs
     }
 
-    searchJobs(searchQuery) {
-
+    async searchJobs(searchQuery) {
+        const jobs = await dbContext.Jobs.find(searchQuery)
+        return jobs
     }
 
-    getJobById(jobId) {
-
+    async getJobById(jobId) {
+        const job = await dbContext.Jobs.findById(jobId)
+        if (!job) throw new Error(`No job at that id: ${jobId}`)
+        return job
     }
 }
 
