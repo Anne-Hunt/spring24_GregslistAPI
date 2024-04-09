@@ -17,6 +17,16 @@ export class HousesController extends BaseController {
         }
     }
 
+    async createHouse(request, response, next) {
+        try {
+            const house = request.data
+            const createdHouse = await housesService.createHouse(house)
+            response.send(createdHouse)
+        } catch (error) {
+            next(error)
+        }
+    }
+
     async searchHouses(request, response, next) {
         try {
             const searchQuery = request.query
@@ -32,6 +42,16 @@ export class HousesController extends BaseController {
             const houseId = request.params.houseId
             const house = await housesService.getHouseById(houseId)
             response.send(house)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async trashHouse(request, response, next) {
+        try {
+            const houseId = request.params.houseId
+            const housetoTrash = await housesService.trashHouse(houseId)
+            response.send(housetoTrash)
         } catch (error) {
             next(error)
         }
