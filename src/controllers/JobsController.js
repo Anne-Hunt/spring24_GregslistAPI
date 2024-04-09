@@ -16,4 +16,24 @@ export class JobsController extends BaseController {
             next(error)
         }
     }
+
+    async searchJobs(request, response, next) {
+        try {
+            const searchQuery = request.query
+            const jobs = await jobsService.searchJobs(searchQuery)
+            response.send(jobs)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getJobById(request, response, next) {
+        try {
+            const jobId = request.params.jobId
+            const job = await jobsService.getJobById(jobId)
+            response.send(job)
+        } catch (error) {
+            next(error)
+        }
+    }
 }

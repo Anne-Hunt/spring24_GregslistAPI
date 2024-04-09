@@ -7,6 +7,14 @@ class PetsService {
         return pets
     }
 
+    searchPets(searchQuery) {
+        _queryBuilder(searchQuery)
+
+    }
+
+    getPetById(petId) {
+
+    }
 }
 
 export const petsService = new PetsService()

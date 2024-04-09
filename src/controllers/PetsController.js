@@ -17,4 +17,24 @@ export class PetsController extends BaseController {
         }
     }
 
+    async searchPets(request, response, next) {
+        try {
+            const searchQuery = request.query
+            const pets = await petsService.searchPets(searchQuery)
+            response.send(pets)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getPetById(request, response, next) {
+        try {
+            const petId = request.params.petId
+            const pet = await petsService.getPetById(petId)
+            response.send(pet)
+        } catch (error) {
+            next(error)
+        }
+    }
+
 }

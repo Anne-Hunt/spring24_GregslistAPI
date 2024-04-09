@@ -7,6 +7,13 @@ class JobsService {
         return jobs
     }
 
+    searchJobs(searchQuery) {
+
+    }
+
+    getJobById(jobId) {
+
+    }
 }
 
 export const jobsService = new JobsService()

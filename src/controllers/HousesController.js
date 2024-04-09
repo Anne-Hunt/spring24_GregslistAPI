@@ -16,4 +16,24 @@ export class HousesController extends BaseController {
             next(error)
         }
     }
+
+    async searchHouses(request, response, next) {
+        try {
+            const searchQuery = request.query
+            const houses = await housesService.searchHouses(searchQuery)
+            response.send(houses)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getHousebyId(request, response, next) {
+        try {
+            const houseId = request.params.houseId
+            const house = await housesService.getHouseById(houseId)
+            response.send(house)
+        } catch (error) {
+            next(error)
+        }
+    }
 }
