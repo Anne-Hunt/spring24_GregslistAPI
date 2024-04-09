@@ -16,7 +16,6 @@ class PetsService {
         const pet = await dbContext.Pets.findById(petId)
         if (!pet) throw new Error(`That pet isn't available ${petId}`)
         return pet
-
     }
 }
 
