@@ -5,7 +5,10 @@ import BaseController from "../utils/BaseController.js";
 export class PetsController extends BaseController {
     constructor() {
         super('api/pets')
-        this.router.get('', this.getPets)
+        this.router
+            .get('', this.getPets)
+            .get('/search', this.searchPets)
+            .get('/:petId', this.getPetById)
     }
 
     async getPets(request, response, next) {

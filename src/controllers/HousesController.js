@@ -5,7 +5,11 @@ import BaseController from "../utils/BaseController.js";
 export class HousesController extends BaseController {
     constructor() {
         super('api/houses')
-        this.router.get('', this.getHouses)
+        this.router
+            .get('', this.getHouses)
+            .get('/search', this.searchHouses)
+            .get('/:houseId', this.getHousebyId)
+            .post('', this.createHouse)
     }
 
     async getHouses(request, response, next) {

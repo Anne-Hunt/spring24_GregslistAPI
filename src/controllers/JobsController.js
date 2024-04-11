@@ -5,7 +5,10 @@ import BaseController from "../utils/BaseController.js";
 export class JobsController extends BaseController {
     constructor() {
         super('api/jobs')
-        this.router.get('', this.getJobs)
+        this.router
+            .get('', this.getJobs)
+            .get('/search', this.searchJobs)
+            .get('/:jobId', this.getJobById)
     }
 
     async getJobs(request, response, next) {
